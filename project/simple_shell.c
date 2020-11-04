@@ -3,6 +3,8 @@
  *
  * Operating System Concepts - Tenth Edition
  * Copyright John Wiley & Sons - 2018
+ *
+ * Modified by Ilker Demirkol
  */
 
 #include <stdio.h>
@@ -20,10 +22,12 @@ int main(void)
         	fflush(stdout);
         
         	/**
-         	 * After reading user input, the steps are:
-         	 * (1) fork a child process
-         	 * (2) the child process will invoke execvp()
-         	 * (3) if command included &, parent will invoke wait()
+         	 * Steps are: 
+		 * 1) Read user input
+		 * 2) If it is a built-in command, call the relevant function
+         	 * 3) Else: fork a child process
+         	 *  3.11) the child process will invoke execvp() to execute the command provided by the user
+		 *  3.12) the parent will wait till the command (child) ends, then displays "Command run successfully.", if the exit value returned is positive, else: some negative message
          	 */
     	}
     
