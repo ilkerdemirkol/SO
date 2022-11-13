@@ -12,13 +12,12 @@ int main()
     {
         if ((pid[i] = fork()) == 0)
         {
-            sleep(1);
-            exit(100 + i);
+            sleep(i);
+            exit(1);
         }
     }
 
-    // Using waitpid() and printing exit status
-    // of children.
+    // Using waitpid() to print the exit status of children
     for (i=0; i<5; i++)
     {
         pid_t cpid = waitpid(pid[i], &stat, 0);
